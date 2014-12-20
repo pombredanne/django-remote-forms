@@ -1,5 +1,5 @@
 from django.utils.functional import Promise
-from django.utils.translation import force_unicode
+from django.utils.encoding import force_unicode
 
 
 def resolve_promise(o):
@@ -18,6 +18,6 @@ def resolve_promise(o):
             except:
                 raise Exception('Unable to resolve lazy object %s' % o)
     elif callable(o):
-            o = o()
+        o = o()
 
     return o

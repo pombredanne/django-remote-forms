@@ -144,7 +144,7 @@ class RemoteEmailField(RemoteCharField):
 
 class RemoteFileField(RemoteField):
     def as_dict(self):
-        field_dict = super(RemoteField, self).as_dict()
+        field_dict = super(RemoteFileField, self).as_dict()
 
         field_dict['max_length'] = self.field.max_length
 
@@ -195,8 +195,8 @@ class RemoteTypedChoiceField(RemoteChoiceField):
         field_dict = super(RemoteTypedChoiceField, self).as_dict()
 
         field_dict.update({
-            'coerce': self.coerce,
-            'empty_value': self.empty_value
+            'coerce': self.field.coerce,
+            'empty_value': self.field.empty_value
         })
 
         return field_dict
@@ -217,8 +217,8 @@ class RemoteTypedMultipleChoiceField(RemoteMultipleChoiceField):
         field_dict = super(RemoteTypedMultipleChoiceField, self).as_dict()
 
         field_dict.update({
-            'coerce': self.coerce,
-            'empty_value': self.empty_value
+            'coerce': self.field.coerce,
+            'empty_value': self.field.empty_value
         })
 
         return field_dict
